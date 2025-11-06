@@ -68,7 +68,11 @@
 
 ###
 
+
 <h6 align="left">This is the discrete form of Maxwell's equation for H</h6>
+
+###
+
 
 ###
 
@@ -85,6 +89,22 @@
 <h6 align="left">Discrete form too!<br>We only update internal nodes because there are special conditions at the edges.</h6>
 
 ###
+<h3 align="left">Magnetic field update H and E for something with ε>1</h3>
+
+###
+
+<div align="center">
+  <img height="200" src="https://github.com/sacrific22/PhysicsCode/blob/main/f5.jpg"  />
+</div>
+
+###
+
+<h6 align="left">Since we  normalized c=1 and μ=1, we can handle materials by assigning different values of 𝜀i,
+  For free space: 𝜀=1
+  For dielectric: 𝜀>1
+
+	​
+</h6>
 
 <h3 align="left">Boundary conditions (PEC — perfectly conducting boundaries)</h3>
 
@@ -108,6 +128,20 @@
 
 <div align="center">
   <img height="200" src="https://github.com/sacrific22/PhysicsCode/blob/main/fdtd_1d.gif"  />
+</div>
+
+###
+###
+
+<div align="center">
+  <img height="200" src="https://github.com/sacrific22/PhysicsCode/blob/main/fdtd_1d_dielectric.giff"  />
+</div>
+
+###
+###
+
+<div align="center">
+  <img height="200" src="https://github.com/sacrific22/PhysicsCode/blob/main/fdtd_1d_dielectric_snapshot.png"  />
 </div>
 
 ###
