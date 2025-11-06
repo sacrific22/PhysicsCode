@@ -1,0 +1,83 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from pathlib import Path
+# Simulation parameters
+N = 200
+dx = 1.0
+c = 1.0
+S = 0.99
+dt = S * dx / c
+Nt = 800
+snap_every = 4
+# Fields
+E = np.zeros(N, dtype=float)
+H = np.zeros(N - 1, dtype=float)
+# Source (Gaussian)
+src_pos = N // 4
+t0 = 40.0
+spread = 12.0
+# Define material distribution (permittivity ε)
+# ε = 1.0 for air, ε = 4.0 for dielectric for example
+eps_r = np.ones(N)
+eps_r[N//2:] = 4.0   # right half is dielectric material
+# Coefficients for E update
+# Each position can have a different permittivity
+CE = dt / (dx * eps_r)
+CH = dt / dx  # same everywhere (since μ = 1)
+# Storage for snapshots
+snapshots = []
+x = np.arange(N) * dx
+# Time-stepping loop
+for n in range(Nt):
+    # Update H field
+    H -= CH * (E[1:] - E[:-1])
+    # Update E field (accounting for material permittivity)
+    E[1:-1] -= CE[1:-1] * (H[1:] - H[:-1])
+    # PEC boundaries
+    E[0] = 0.0
+    E[-1] = 0.0
+    # Source
+    src = np.exp(-0.5 * ((n - t0) / spread) ** 2)
+    E[src_pos] += src
+    # Save snapshots
+    if (n % snap_every) == 0:
+        snapshots.append(E.copy())
+# Create and save animation
+fig, ax = plt.subplots(figsize=(9, 3.5))
+ax.set_xlim(0, (N - 1) * dx)
+ax.set_ylim(-1.2, 1.2)
+ax.set_xlabel('x (grid index × dx)')
+ax.set_ylabel('E (normalized)')
+line, = ax.plot(x, snapshots[0], lw=1.5, label='E-field')
+# Plot permittivity profile
+ax2 = ax.twinx()
+ax2.plot(x, eps_r, 'r--', alpha=0.4, label='ε_r')
+ax2.set_ylabel('Relative Permittivity εr', color='r')
+ax2.set_ylim(0, np.max(eps_r) * 1.2)
+ax.legend(loc='upper left')
+ax2.legend(loc='upper right')
+ax.set_title('1D FDTD — E-field (Dielectric Boundary)')
+def animate(i):
+    line.set_ydata(snapshots[i])
+    ax.set_title(f'1D FDTD — E-field — step: {i * snap_every}')
+    return (line,)
+ani = animation.FuncAnimation(fig, animate, frames=len(snapshots), interval=30, blit=True)
+gif_path = Path('fdtd_1d_dielectric.gif')
+ani.save(gif_path, writer='pillow', fps=30)
+plt.close(fig)
+# Save snapshot
+fig2, ax2 = plt.subplots(figsize=(9, 3.5))
+ax2.plot(x, snapshots[0], lw=1.3)
+ax2.set_xlim(0, (N - 1) * dx)
+ax2.set_ylim(-1.2, 1.2)
+ax2.set_xlabel('x (grid index × dx)')
+ax2.set_ylabel('E (normalized)')
+ax2.set_title('1D FDTD — sample snapshot (first frame)')
+ax2.plot(x, eps_r / np.max(eps_r), 'r--', alpha=0.4, label='ε_r scaled')
+ax2.legend()
+preview_path = Path('fdtd_1d_dielectric_snapshot.png')
+fig2.savefig(preview_path, bbox_inches='tight')
+plt.close(fig2)
+print(f"Animation saved to: {gif_path.resolve()}")
+print(f"Preview snapshot saved to: {preview_path.resolve()}")
