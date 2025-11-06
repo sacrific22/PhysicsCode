@@ -151,7 +151,7 @@
 
 
 <h3 align="left">Extras</h3>
-###
+
 
 <div align="center">
   <img height="200" src="https://github.com/sacrific22/PhysicsCode/blob/main/fdtd_1d_dielectric_with_slab_and_higher_e_region.gif"  />
