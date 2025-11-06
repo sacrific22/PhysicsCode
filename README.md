@@ -15,7 +15,8 @@
 ###
 
 <p align="left">Solve Maxvell equation on grid in terms of time and space in 1 Dimesion<br>
-  $$<br>\frac{\partial E}{\partial t} = - \frac{\partial H}{\partial x},<br>\qquad<br>\frac{\partial H}{\partial t} = - \frac{\partial E}{\partial x}<br>$$<br>	​</p>
+  ```math
+  <br>\frac{\partial E}{\partial t} = - \frac{\partial H}{\partial x},<br>\qquad<br>\frac{\partial H}{\partial t} = - \frac{\partial E}{\partial x}<br>$$<br>	​</p>
 
 ###
 
