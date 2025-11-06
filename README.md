@@ -149,6 +149,27 @@
 
 ###
 
+
+<h3 align="left">Extras</h3>
+###
+
+<div align="center">
+  <img height="200" src="https://github.com/sacrific22/PhysicsCode/blob/main/fdtd_1d_dielectric_with_slab_and_higher_e_region.gif"  />
+</div>
+
+###
+
+<div align="center">
+  <img height="200" src="https://github.com/sacrific22/PhysicsCode/blob/main/fdtd_1d_dielectric_snapshot_slab.png"  />
+</div>
+
+###
+
+<h6 align="left">added dielectric slab in the middle and made higher e region in the end eps_r[80:120] = 2.5 (this is slab) eps_r[150:] = 5.0 (this is higher region)</h6>
+
+###
+
+
 <h2 align="left">Coded on</h2>
 
 ###
