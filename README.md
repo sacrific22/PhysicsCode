@@ -131,14 +131,14 @@
 </div>
 
 ###
-###
+
 
 <div align="center">
   <img height="200" src="https://github.com/sacrific22/PhysicsCode/blob/main/fdtd_1d_dielectric.giff"  />
 </div>
 
 ###
-###
+
 
 <div align="center">
   <img height="200" src="https://github.com/sacrific22/PhysicsCode/blob/main/fdtd_1d_dielectric_snapshot.png"  />
