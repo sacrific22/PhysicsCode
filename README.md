@@ -99,13 +99,8 @@
 
 ###
 
-<h6 align="left">Since we  normalized c=1 and μ=1, we can handle materials by assigning different values of 𝜀i,
-  For free space: 𝜀=1
-  For dielectric: 𝜀>1
-
-	​
-</h6>
-
+<h6 align="left">Since we  normalized c=1 and μ=1, we can handle materials by assigning different values of 𝜀i, For free space: 𝜀=1 , For dielectric: 𝜀>1</h6>
+###
 <h3 align="left">Boundary conditions (PEC — perfectly conducting boundaries)</h3>
 
 ###
